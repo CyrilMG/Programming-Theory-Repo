@@ -12,7 +12,7 @@ public class MenuUIHandler : MonoBehaviour
     public void NewGame()
     {
         // Clear Data
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("SelectPlayer");
     }
 
     public void Continue()
