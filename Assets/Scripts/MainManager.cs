@@ -9,6 +9,8 @@ public class MainManager : MonoBehaviour
 
     public Settings settings;
 
+    public LanguageText languageText;
+
     private void Awake()
     {
         if (Instance != null)
@@ -41,7 +43,13 @@ public class MainManager : MonoBehaviour
 
             settings = data.settings;
 
+            LoadLanguage(settings.language);
         }
+        else
+        {
+            LoadLanguage(Language.English);
+        }
+
     }
 
     public void SaveData()
@@ -54,5 +62,15 @@ public class MainManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
 
         LoadData();
+    }
+
+    public void LoadLanguage(Language language)
+    {
+        string path = Application.persistentDataPath + "/" + language.ToString() + ".json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            languageText = JsonUtility.FromJson<LanguageText>(json);
+        }
     }
 }

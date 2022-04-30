@@ -342,7 +342,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 35}
+  m_SizeDelta: {x: 200, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &103015924
 MonoBehaviour:
@@ -387,19 +387,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 103015925}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217952377}
-        m_TargetAssemblyTypeName: MenuUIHandler, Assembly-CSharp
-        m_MethodName: Settings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &103015925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +733,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 35}
+  m_SizeDelta: {x: 200, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579021275
 MonoBehaviour:
@@ -790,19 +778,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 579021276}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217952377}
-        m_TargetAssemblyTypeName: MenuUIHandler, Assembly-CSharp
-        m_MethodName: Continue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &579021276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,7 +1006,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
+    language: 0
     musicVolume: 1
+    effectVolume: 1
+  languageText:
+    NEW_GAME_BUTTON: 
+    CONTINUE_BUTTON: 
+    SETTINGS_BUTTON: 
+    QUIT_BUTTON: 
+    LANGUAGE: 
+    SETTINGS_TITLE: 
+    MUSIC_VOLUME: 
+    EFFECT_VOLUME: 
+    SAVE_BUTTON: 
+    CANCEL_BUTTON: 
 --- !u!4 &713433417
 Transform:
   m_ObjectHideFlags: 0
@@ -1379,6 +1368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8209379809f5148b37875fa5beec15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGameButton: {fileID: 1242905284}
+  continueButton: {fileID: 579021275}
+  settingsButton: {fileID: 103015924}
+  quitButton: {fileID: 1860465035}
 --- !u!1 &1242905282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1409,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 35}
+  m_SizeDelta: {x: 200, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242905284
 MonoBehaviour:
@@ -1461,19 +1454,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1242905285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217952377}
-        m_TargetAssemblyTypeName: MenuUIHandler, Assembly-CSharp
-        m_MethodName: NewGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1242905285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1624,7 +1605,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 35}
+  m_SizeDelta: {x: 200, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860465035
 MonoBehaviour:
@@ -1669,19 +1650,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1860465036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1217952377}
-        m_TargetAssemblyTypeName: MenuUIHandler, Assembly-CSharp
-        m_MethodName: Quit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1860465036
 MonoBehaviour:
   m_ObjectHideFlags: 0
