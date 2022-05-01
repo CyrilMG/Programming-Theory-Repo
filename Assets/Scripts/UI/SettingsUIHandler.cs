@@ -21,27 +21,25 @@ public class SettingsUIHandler : MonoBehaviour
     [SerializeField] Button cancelButton;
 
 
-    Settings settings;
-
-    Language startLanguage;
+    public static Settings settings;
 
     private void Start()
     {
-        if(MainManager.Instance != null && MainManager.Instance.settings != null)
+        if (MainManager.Instance != null && MainManager.Instance.settings != null)
         {
             settings = new Settings();
             settings.musicVolume = MainManager.Instance.settings.musicVolume;
             settings.effectVolume = MainManager.Instance.settings.effectVolume;
             settings.language = MainManager.Instance.settings.language;
-            startLanguage = MainManager.Instance.settings.language;
 
             musicVolumeSlider.value = settings.musicVolume;
+            effectVolumeSlider.value = settings.effectVolume;
 
             ChangeLanguageText();
         }
 
-        musicVolumeSlider.onValueChanged.AddListener((value) => settings.musicVolume = value );
-        effectVolumeSlider.onValueChanged.AddListener((value) => settings.effectVolume = value );
+        musicVolumeSlider.onValueChanged.AddListener(UpdateMusicVolume);
+        effectVolumeSlider.onValueChanged.AddListener(UpdateEffectVolume);
 
         languageButton.onClick.AddListener(ChangeLanguage);
         saveButton.onClick.AddListener(Save);
@@ -55,14 +53,26 @@ public class SettingsUIHandler : MonoBehaviour
         
         MainManager.Instance.SaveData();
 
-        SceneManager.LoadScene("Menu");
+        MainManager.Instance.LoadScene("Menu", 0.1f);
     }
 
     public void Cancel()
     {
-        MainManager.Instance.LoadLanguage(startLanguage);
+        MainManager.Instance.LoadLanguage(settings.language);
+        MainManager.Instance.audioSource.volume = MainManager.Instance.settings.musicVolume;
 
-        SceneManager.LoadScene("Menu");
+        MainManager.Instance.LoadScene("Menu", 0.1f);
+    }
+
+    private void UpdateMusicVolume(float value)
+    {
+        settings.musicVolume = value;
+        MainManager.Instance.audioSource.volume = settings.musicVolume;
+    }
+
+    private void UpdateEffectVolume(float value)
+    {
+        settings.effectVolume = value;
     }
 
     public void ChangeLanguage()
@@ -94,5 +104,4 @@ public class SettingsUIHandler : MonoBehaviour
         saveButton.GetComponentInChildren<TextMeshProUGUI>().text = MainManager.Instance.languageText.SAVE_BUTTON;
         cancelButton.GetComponentInChildren<TextMeshProUGUI>().text = MainManager.Instance.languageText.CANCEL_BUTTON;
     }
-
 }

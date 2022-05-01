@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MainManager : MonoBehaviour
 
     public LanguageText languageText;
 
+    public AudioSource audioSource;
+    public AudioClip soundInterractUI;
     private void Awake()
     {
         if (Instance != null)
@@ -23,6 +26,8 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         LoadData();
+
+        audioSource.volume = settings.musicVolume;
     }
 
 
@@ -72,5 +77,16 @@ public class MainManager : MonoBehaviour
             string json = File.ReadAllText(path);
             languageText = JsonUtility.FromJson<LanguageText>(json);
         }
+    }
+
+    public void LoadScene(string sceneName, float delay = 0f)
+    {
+        StartCoroutine(LoadSceneCoroutine(sceneName, delay));
+    }
+
+    IEnumerator LoadSceneCoroutine(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 }

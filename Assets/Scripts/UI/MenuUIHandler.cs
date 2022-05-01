@@ -32,23 +32,23 @@ public class MenuUIHandler : MonoBehaviour
     public void NewGame()
     {
         // Clear Data
-        SceneManager.LoadScene("SelectPlayer");
+        MainManager.Instance.LoadScene("SelectPlayer", 0.1f);
     }
 
     public void Continue()
     {
         // Load Data
-        SceneManager.LoadScene("Game");
+        MainManager.Instance.LoadScene("Game", 0.1f);
     }
 
     public void Settings()
     {
-        SceneManager.LoadScene("Settings");
+        MainManager.Instance.LoadScene("Settings", 0.1f);
     }
 
     public void Quit()
     {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
     #else
         Application.Quit();
