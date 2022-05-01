@@ -1,0 +1,15 @@
+﻿{
+  "NEW_GAME_BUTTON": "Nouvelle Partie",
+  "CONTINUE_BUTTON": "Continuer",
+  "SETTINGS_BUTTON": "Paramètres",
+  "QUIT_BUTTON": "Quitter",
+  "LANGUAGE": "Français",
+  "SETTINGS_TITLE": "Paramètres",
+  "MUSIC_VOLUME": "Volume Musique",
+  "EFFECT_VOLUME": "Volume Effet",
+  "SAVE_BUTTON": "Sauvegarder",
+  "CANCEL_BUTTON": "Annuler",
+  "SELECT_PLAYER_TITLE": "Choix du personnage",
+  "ENTER_PLAYER_NAME": "Nom du joueur...",
+  "PLAY_BUTTON": "Jouer"
+}

@@ -1008,6 +1008,9 @@ MonoBehaviour:
     EFFECT_VOLUME: 
     SAVE_BUTTON: 
     CANCEL_BUTTON: 
+    SELECT_PLAYER_TITLE: 
+    ENTER_PLAYER_NAME: 
+    PLAY_BUTTON: 
   audioSource: {fileID: 713433418}
   soundInterractUI: {fileID: 8300000, guid: c053c3d2a711144dcb83ba80730f20a6, type: 3}
 --- !u!4 &713433417

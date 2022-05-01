@@ -1,0 +1,15 @@
+﻿{
+  "NEW_GAME_BUTTON": "New Game",
+  "CONTINUE_BUTTON": "Continue",
+  "SETTINGS_BUTTON": "Settings",
+  "QUIT_BUTTON": "Quit",
+  "LANGUAGE": "English",
+  "SETTINGS_TITLE": "Settings",
+  "MUSIC_VOLUME": "Music Volume",
+  "EFFECT_VOLUME": "Effect Volume",
+  "SAVE_BUTTON": "Save",
+  "CANCEL_BUTTON": "Cancel",
+  "SELECT_PLAYER_TITLE": "Choose your character",
+  "ENTER_PLAYER_NAME": "Player name...",
+  "PLAY_BUTTON": "Play"
+}

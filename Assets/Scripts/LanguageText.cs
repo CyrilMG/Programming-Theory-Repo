@@ -18,4 +18,10 @@ public class LanguageText
     public string EFFECT_VOLUME;
     public string SAVE_BUTTON;
     public string CANCEL_BUTTON;
+
+    // SelectPlayer
+    public string SELECT_PLAYER_TITLE;
+    public string ENTER_PLAYER_NAME;
+    public string PLAY_BUTTON;
+
 }
