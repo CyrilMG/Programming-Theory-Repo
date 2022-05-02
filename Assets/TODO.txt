@@ -1,4 +1,4 @@
-- Load Player Info in Game 
+- Load Player Info in Game (Display)
 - Player Movement (Go to mouse click)
 - Make Interraction with animals
 - Dispay ressource in UI
