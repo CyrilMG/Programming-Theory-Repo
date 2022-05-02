@@ -1,7 +1,4 @@
-- Load Player Info in Game (Display)
-- Player Movement (Go to mouse click)
 - Make Interraction with animals
 - Dispay ressource in UI
 - Load a Game (See what we need to store and restore)
-- Pause menu (Stats, Save, Menu, Quit)
-- Implement Stats
+- Pause menu (Save, Menu, Quit)
