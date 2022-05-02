@@ -9,6 +9,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance { get; private set; }
 
     public Settings settings;
+    public PlayerInfo playerInfo;
 
     public LanguageText languageText;
 
@@ -35,6 +36,7 @@ public class MainManager : MonoBehaviour
     class PersistantData
     {
         public Settings settings;
+        public PlayerInfo playerInfo;
     }
 
 
@@ -47,6 +49,7 @@ public class MainManager : MonoBehaviour
             PersistantData data = JsonUtility.FromJson<PersistantData>(json);
 
             settings = data.settings;
+            playerInfo = data.playerInfo;
 
             LoadLanguage(settings.language);
         }
@@ -61,6 +64,7 @@ public class MainManager : MonoBehaviour
     {
         PersistantData persistantData = new PersistantData();
         persistantData.settings = settings;
+        persistantData.playerInfo = playerInfo;
 
         string json = JsonUtility.ToJson(persistantData);
 

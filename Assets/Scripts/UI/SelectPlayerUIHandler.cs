@@ -7,11 +7,25 @@ using UnityEngine.UI;
 public class SelectPlayerUIHandler : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI titleText;
+
+    [SerializeField] Button manButton;
+    [SerializeField] Button womanButton;
+
+    [SerializeField] Button leftButton;
+    [SerializeField] Button rightButton;
+
     [SerializeField] TMP_InputField playerNameField;
     [SerializeField] Button playButton;
 
-    [SerializeField] List<GameObject> characters;
+    [SerializeField] List<GameObject> manCharacters;
+    [SerializeField] List<GameObject> womanCharacters;
     int currentCharacter = 0;
+
+    int currenSexe = 0;
+
+    ColorBlock activeColor;
+    ColorBlock inactiveColor;
+    
 
     void Start()
     {
@@ -20,10 +34,37 @@ public class SelectPlayerUIHandler : MonoBehaviour
             ChangeLanguageText();
         }
 
-        characters[currentCharacter].SetActive(true);
+        manButton.onClick.AddListener(delegate { SelectSexe(0); });
+        womanButton.onClick.AddListener(delegate { SelectSexe(1); });
+
+        leftButton.onClick.AddListener(PreviousCharacter);
+        rightButton.onClick.AddListener(NextCharacter);
+
+        playerNameField.onEndEdit.AddListener(SetPlayerName);
+
+        playButton.onClick.AddListener(Play);
+        playButton.interactable = false;
+
+        manCharacters[currentCharacter].SetActive(true);
+
+        activeColor = manButton.colors;
+        inactiveColor = womanButton.colors;
+
     }
 
+    void Play()
+    {
+        PlayerInfo playerInfo = new PlayerInfo();
+        playerInfo.playerName = playerNameField.text;
+        playerInfo.playerSexe = currenSexe;
+        playerInfo.playerCharacter = currenSexe == 0 ? manCharacters[currentCharacter].name : womanCharacters[currentCharacter].name;
 
+        MainManager.Instance.playerInfo = playerInfo;
+
+        MainManager.Instance.SaveData();
+
+        MainManager.Instance.LoadScene("Game", 0.1f);
+    }
 
     private void ChangeLanguageText()
     {
@@ -32,44 +73,102 @@ public class SelectPlayerUIHandler : MonoBehaviour
         playButton.GetComponentInChildren<TextMeshProUGUI>().text = MainManager.Instance.languageText.PLAY_BUTTON;
     }
 
-    public void Update()
+    void SetPlayerName(string playerName)
     {
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (!string.IsNullOrEmpty(playerName))
         {
-            NextCharacter();
+            playButton.interactable = true;
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        else
         {
-            PreviousCharacter();
+            playButton.interactable = false;
         }
+    }
 
+    void SelectSexe(int sexe)
+    {
+        if(sexe == 0)
+        {
+            currenSexe = 0;
+            currentCharacter = 0;
+            SelectCharacter();
+
+            manButton.colors = activeColor;
+            womanButton.colors = inactiveColor;
+        }
+        else
+        {
+            currenSexe = 1;
+            currentCharacter = 0;
+            SelectCharacter();
+
+            womanButton.colors = activeColor;
+            manButton.colors = inactiveColor;
+        }
     }
 
     void NextCharacter()
     {
-        if (currentCharacter + 1 == characters.Count)
-            currentCharacter = 0;
-        else
-            currentCharacter++;
+        if (currenSexe == 0)
+        {
+            if (currentCharacter + 1 == manCharacters.Count)
+                currentCharacter = 0;
+            else
+                currentCharacter++;
 
-        DesactiveAllCharacters();
-        characters[currentCharacter].SetActive(true);
+            SelectCharacter();
+        }
+        else
+        {
+            if (currentCharacter + 1 == womanCharacters.Count)
+                currentCharacter = 0;
+            else
+                currentCharacter++;
+
+            SelectCharacter();
+        }
     }
 
     void PreviousCharacter()
     {
-        if (currentCharacter == 0)
-            currentCharacter = characters.Count - 1;
-        else
-            currentCharacter--;
+        if (currenSexe == 0)
+        {
+            if (currentCharacter == 0)
+                currentCharacter = manCharacters.Count - 1;
+            else
+                currentCharacter--;
 
+            SelectCharacter();
+        }
+        else
+        {
+            if (currentCharacter == 0)
+                currentCharacter = womanCharacters.Count - 1;
+            else
+                currentCharacter--;
+
+            SelectCharacter();
+        }
+    }
+
+    void SelectCharacter()
+    {
         DesactiveAllCharacters();
-        characters[currentCharacter].SetActive(true);
+
+        if(currenSexe == 0)
+            manCharacters[currentCharacter].SetActive(true);
+        else
+            womanCharacters[currentCharacter].SetActive(true);
     }
 
     void DesactiveAllCharacters()
     {
-        foreach(GameObject character in characters)
+        foreach(GameObject character in manCharacters)
+        {
+            character.SetActive(false);
+        }
+
+        foreach(GameObject character in womanCharacters)
         {
             character.SetActive(false);
         }

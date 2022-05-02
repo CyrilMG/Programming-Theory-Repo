@@ -21,12 +21,16 @@ public class MenuUIHandler : MonoBehaviour
         if(MainManager.Instance != null && MainManager.Instance.settings != null)
         {
             ChangeLanguageText();
+
+            if (MainManager.Instance.playerInfo == null || string.IsNullOrEmpty(MainManager.Instance.playerInfo.playerName))
+                continueButton.interactable = false;
         }
 
         newGameButton.onClick.AddListener(NewGame);
         continueButton.onClick.AddListener(Continue);
         settingsButton.onClick.AddListener(Settings);
         quitButton.onClick.AddListener(Quit);
+
     }
 
     public void NewGame()

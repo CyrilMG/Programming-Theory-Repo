@@ -1,5 +1,4 @@
-- Select Player : Add Choose Sexe and Arrow to select player
-- Select Player (List of Character, enter a name : Save Name and CharacterName (Same in Game to set Active right character))
+- Load Player Info in Game 
 - Player Movement (Go to mouse click)
 - Make Interraction with animals
 - Dispay ressource in UI
