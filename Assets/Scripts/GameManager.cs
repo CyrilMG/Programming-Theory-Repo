@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     PlayerController playerController;
 
-    private void Start()
+    private void Awake()
     {
         if(MainManager.Instance != null)
         {

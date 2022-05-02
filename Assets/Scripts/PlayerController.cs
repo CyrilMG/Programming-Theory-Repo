@@ -7,7 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float speed = 5;
 
     [SerializeField] List<GameObject> playerCharacters;
 
@@ -15,29 +15,40 @@ public class PlayerController : MonoBehaviour
 
     Animal target;
 
+    Animator animator;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = speed;
         navMeshAgent.acceleration = 999;
         navMeshAgent.angularSpeed = 999;
+
+    }
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Input.GetMouseButtonDown(0))
         {
-            var animal = hit.collider.GetComponentInParent<Animal>();
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                var animal = hit.collider.GetComponentInParent<Animal>();
 
-            if (animal != null)
-            {
-                GoTo(animal);
-            }
-            else
-            {
-                Goto(hit.point);
+                if (animal != null)
+                {
+                    GoTo(animal);
+                }
+                else
+                {
+                    Goto(hit.point);
+                }
             }
         }
 
@@ -51,6 +62,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        animator.SetFloat("Speed_f", navMeshAgent.velocity == Vector3.zero ? 0 : 0.5f);
     }
 
     private void AnimalInRange()

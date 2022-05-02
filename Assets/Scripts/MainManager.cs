@@ -15,6 +15,7 @@ public class MainManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip soundInterractUI;
+
     private void Awake()
     {
         if (Instance != null)
@@ -75,11 +76,10 @@ public class MainManager : MonoBehaviour
 
     public void LoadLanguage(Language language)
     {
-        string path = Application.persistentDataPath + "/" + language.ToString() + ".json";
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            languageText = JsonUtility.FromJson<LanguageText>(json);
+        var jsonFile = Resources.Load<TextAsset>("Localization/" + language.ToString());
+        if (jsonFile != null)
+        {;
+            languageText = JsonUtility.FromJson<LanguageText>(jsonFile.text);
         }
     }
 
