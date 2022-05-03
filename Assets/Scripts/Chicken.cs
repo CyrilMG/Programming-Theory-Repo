@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Chicken : Animal
 {
-    // Start is called before the first frame update
-    void Start()
+    GameManager gameManager;
+
+    private void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Action()
     {
-        
+        base.Action();
+        gameManager.EggsCount++;   
     }
 }

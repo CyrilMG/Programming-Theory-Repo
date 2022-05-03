@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
+    float nextActionTime;
+    float period = 1f;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -57,8 +60,16 @@ public class PlayerController : MonoBehaviour
             float distance = Vector3.Distance(target.transform.position, transform.position);
             if (distance < 2.0f)
             {
-                navMeshAgent.isStopped = true;
-                AnimalInRange();
+                navMeshAgent.isStopped = true; 
+                
+                if (Time.time > nextActionTime)
+                {
+                    if (navMeshAgent.velocity == Vector3.zero)
+                    {
+                        AnimalInRange();
+                    }
+                    nextActionTime = Time.time + period;
+                }
             }
         }
 
@@ -67,14 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void AnimalInRange()
     {
-        if (target is Chicken)
-        {
-
-        }
-        else if (target is Cow)
-        {
-
-        }
+        target.Action();
     }
 
     void GoTo(Animal newTarget)

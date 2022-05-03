@@ -24,4 +24,9 @@ public class LanguageText
     public string ENTER_PLAYER_NAME;
     public string PLAY_BUTTON;
 
+    // Game
+    public string MILK_SCORE;
+    public string EGGS_SCORE;
+
+
 }

@@ -11,5 +11,7 @@
   "CANCEL_BUTTON": "Cancel",
   "SELECT_PLAYER_TITLE": "Choose your character",
   "ENTER_PLAYER_NAME": "Player name...",
-  "PLAY_BUTTON": "Play"
+  "PLAY_BUTTON": "Play",
+  "MILK_SCORE": "Milk: {0}",
+  "EGGS_SCORE": "Eggs: {0}"
 }

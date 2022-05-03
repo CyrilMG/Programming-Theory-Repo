@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cow : Animal
+public class Cow : Animal // INHERITANCE
 {
-    // Start is called before the first frame update
-    void Start()
+    GameManager gameManager;
+
+    private void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Action() // POLYMORPHISM
     {
-        
+        base.Action();
+        gameManager.MilkCount++;
     }
 }
